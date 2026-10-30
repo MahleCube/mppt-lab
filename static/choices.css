@@ -1,0 +1,35 @@
+/* A select remains as the value/event adapter; all choices are visible. */
+select.choice-native-hidden{display:none!important}
+.choice-control{min-width:0;max-width:100%;margin:0 0 18px;color:#31586b}
+.choice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,135px),1fr));gap:7px;min-width:0}
+.choice-button{min-width:0;min-height:39px;max-width:100%;padding:8px 10px;border:1px solid #c7dbe2;border-radius:5px;background:#fff;color:#31586b;text-align:center;font-size:12px;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+.choice-button:hover:not(:disabled){border-color:#78b4b8;background:#f0f9f8}
+.choice-button[aria-checked=true]{border-color:#087f8c;background:#e5f3f2;color:#046b76;box-shadow:inset 0 0 0 1px #087f8c;font-weight:600}
+.choice-button:disabled{opacity:.42;cursor:default}
+.choice-button:focus-visible{outline:3px solid #e0a352;outline-offset:2px}
+.choice-option-group+.choice-option-group{margin-top:12px}
+.choice-group-name{font-size:11px;color:#6a8491;margin:0 0 6px;line-height:1.5}
+.choice-current-status{margin:0 0 8px;font-size:12px;color:#426c79}
+.method-editor>.choice-control{margin-bottom:20px}
+[data-choice-for=preset] .choice-grid{grid-template-columns:1fr}
+[data-choice-for=algorithm] .choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+[data-choice-for=algorithm] .choice-button{padding-left:5px;padding-right:5px}
+[data-choice-for=custom-topology] .choice-grid,[data-choice-for=source-circuit] .choice-grid{grid-template-columns:1fr}
+[data-choice-for=custom-voltage-mode] .choice-grid,[data-choice-for=custom-current-mode] .choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+[data-choice-for=plant-mode] .choice-grid,[data-choice-for=custom-mppt] .choice-grid,[data-choice-for=mppt-method] .choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chart-view .choice-control,.current-view-controls .choice-control,.chart-heading .choice-control{margin:0;flex:1;min-width:min(100%,180px)}
+.chart-view .choice-grid,.current-view-controls .choice-grid,.chart-heading .choice-grid{display:flex;flex-wrap:wrap;gap:5px}
+.chart-view .choice-button,.current-view-controls .choice-button,.chart-heading .choice-button{flex:1;min-height:31px;font-size:10px;padding:5px 8px;white-space:normal}
+.chart-view:has(#view-width-choices){gap:8px}
+.chart-view>label:has(#view-width){flex:none;white-space:nowrap}
+.chart-view #view-width-choices{flex:1 1 calc(100% - 52px);min-width:0}
+.chart-view #view-width-choices .choice-button{flex:0 0 auto;min-width:40px;white-space:nowrap;overflow-wrap:normal}
+.chart-view .view-position{flex:1 1 calc(100% - 100px);min-width:0;white-space:nowrap}
+.chart-view .view-position input{flex:1;min-width:0;width:auto;max-width:none}
+.current-view-controls:has(#current-view-choices){flex-wrap:wrap;gap:8px}
+.chart-heading:has(#zoom-position-choices){flex-wrap:wrap;gap:8px}
+.chart-heading:has(#zoom-position-choices) h2{margin-right:auto}
+.chart-heading #zoom-position-choices{flex:1 1 100%}
+.chart-heading .zoom-select:has(.choice-native-hidden){margin-left:auto;flex-direction:row;font-size:10px}
+@media(max-width:600px){.choice-button{font-size:12px;min-height:42px}.choice-control{margin-bottom:16px}}
+@media(forced-colors:active){.choice-button[aria-checked=true]{border:2px solid Highlight;color:Highlight;box-shadow:none}.choice-button:focus-visible{outline-color:Highlight}}

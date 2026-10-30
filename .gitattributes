@@ -1,0 +1,4 @@
+# Preserve the exact bytes verified by the native source checks.
+native/**/c07_control.c -text
+native/**/c07_control.h -text
+*.dll binary

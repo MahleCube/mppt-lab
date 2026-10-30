@@ -1,0 +1,21 @@
+/* Main power path is vertical. Cin/Cout remain visibly parallel branches to GND. */
+.circuit-overview{margin:0 0 14px;min-width:0;color:#214e62}
+.circuit-stage{position:relative;z-index:1;padding:10px 8px;text-align:center;background:#fff;border:1px solid #c5dce2;border-radius:7px;min-width:0}
+.circuit-stage>strong{display:block;font-size:13px;line-height:1.6}
+.circuit-stage-value{display:block;font-size:12px;line-height:1.7;margin-top:3px;color:#527181}
+.circuit-pv{background:#fff5df;border-color:#e3c998}
+.circuit-buck{background:#e8f5f2;border-color:#a7cec3}
+.circuit-battery{background:#eaf1fa;border-color:#b6cce3}
+.circuit-power-arrow{text-align:center;font-size:20px;line-height:24px;color:#6c9ca7}
+.circuit-cap-branch{position:relative;min-height:78px;padding:7px 0}
+.circuit-cap-branch::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid #86aab6}
+.circuit-cap-branch::after{content:"";position:absolute;left:calc(50% - 3px);bottom:0;border-top:6px solid #86aab6;border-left:3px solid transparent;border-right:3px solid transparent}
+.circuit-cap-card{position:relative;margin-left:calc(50% + 13px);padding:5px 3px;min-width:0;display:flex;align-items:center;gap:4px}
+.circuit-cap-card::before{content:"";position:absolute;right:100%;top:50%;width:13px;border-top:1px solid #86aab6}
+.circuit-cap-card>div{min-width:0;font-size:11px;line-height:1.5;color:#527181}
+.circuit-cap-card strong,.circuit-cap-card [data-circuit-value],.circuit-ground{display:block}
+.circuit-cap-card strong{font-size:12px;font-weight:600;color:#31596b}
+.circuit-cap-symbol{flex:none;width:17px;height:32px;fill:none;stroke:#638896;stroke-width:1.6;stroke-linecap:round}
+.circuit-ground{font-size:10px;color:#73909d}
+.circuit-overview figcaption{margin-top:9px;text-align:center;font-size:11px;line-height:1.6;color:#6b8592}
+@media(forced-colors:active){.circuit-stage{border-color:CanvasText}.circuit-cap-symbol{stroke:CanvasText}}

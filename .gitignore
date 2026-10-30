@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.nbc
+*.nbi
+*.log
+*.pid
+*.pdb
+*.lib
+build_receipt.json
+.env
+.env.*
+.DS_Store
