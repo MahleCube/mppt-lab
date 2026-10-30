@@ -278,7 +278,7 @@
       const notes=[r.reason,...(Array.isArray(r.notes)?r.notes:[])].filter(Boolean);
       if(notes.length)html+='<ul>'+notes.map(n=>'<li>'+esc(text(n))+'</li>').join('')+'</ul>';
     }
-    html+='<p><a href="/AUTOTUNE.md" target="_blank" rel="noopener">計算法・評価条件</a></p></article>';
+    html+='<p><a href="AUTOTUNE.md" target="_blank" rel="noopener">計算法・評価条件</a></p></article>';
     host.innerHTML=html;
   }
   function explanation() {

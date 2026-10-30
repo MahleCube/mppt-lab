@@ -46,3 +46,16 @@ PVは25°C、直列抵抗0・並列抵抗無限大の単一ダイオード近似
 c07では入力L2、保護経路の抵抗、容量のESR、電流依存のL1、電圧依存の出力容量などを加えています。パネル端子、電圧センサ位置、Buck入力を分けるため、簡略Buckとは測定の意味も異なります。[接続と測定点](C07_MODEL_EXTENSION.md)を参照してください。
 
 回路モデルは正常ON時の比較用です。ゲートの立上り、熱、基板の起動・故障処理まで再現するものではありません。
+
+## ブラウザ版
+
+計算は閲覧している端末で行います。Pyodideで同じPythonの制御器・イベント順序・評価処理を動かし、数値積分とc07のC制御はWebAssemblyで実行します。画面の処理と計算はWeb Workerで分けています。初回は外部CDNからPython・NumPy・SciPyを読み込みます。
+
+ブラウザ用ファイルを再生成する場合は、Pythonの依存ライブラリとZigを用意して次を実行します。
+
+```sh
+python browser/build_native.py
+python browser/build_kernels.py
+python browser/generate_config.py
+python browser/build_page.py
+```

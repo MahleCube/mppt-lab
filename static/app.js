@@ -286,8 +286,8 @@
     $('algorithm-steps').innerHTML=(irr?guide.irradiance:guide.voltage).map((step,i)=>`<li><span class="guide-step-number">${i+1}</span><div><strong>${esc(step[0])}</strong><p>${esc(step[1])}</p></div></li>`).join('');
     $('algorithm-experiment-note').textContent=`今の実験：${experimentLabel(c)}。${guide.experiment}`;
     $('algorithm-boundary').textContent=guide.boundary;
-    const guideLink=$('algorithm-guide').querySelector('a[href="/ALGORITHMS.md"],a[href="/C07_R03.md"],a[href="/C07_R04.md"]');
-    if(guideLink){guideLink.href=isC07Firmware(id)?'/'+id.toUpperCase()+'.md':'/ALGORITHMS.md';guideLink.textContent=isC07Firmware(id)?firmwareVersion(id)+'の保存設定・再現範囲':'式・参考コード・変更点';}
+    const guideLink=$('algorithm-guide').querySelector('a[href$="ALGORITHMS.md"],a[href$="C07_R03.md"],a[href$="C07_R04.md"]');
+    if(guideLink){guideLink.href=isC07Firmware(id)?id.toUpperCase()+'.md':'ALGORITHMS.md';guideLink.textContent=isC07Firmware(id)?firmwareVersion(id)+'の保存設定・再現範囲':'式・参考コード・変更点';}
     $('algorithm-formulas').innerHTML=guide.formula.map(x=>`<p>${esc(x)}</p>`).join('');
     const periods=[['測定を要求する間隔',format(c.control_us,3)+' µs']];
     if(id==='custom'&&c.custom_topology!=='direct_duty'){
@@ -810,7 +810,7 @@
   }
   async function init(){
     try{
-      const response=await fetch('/api/config');if(!response.ok)throw new Error('Pythonサーバーの設定を取得できません。');
+      const response=await fetch('/api/config');if(!response.ok)throw new Error('設定を読み込めませんでした。');
       const data=await response.json();defaults={algorithm:'baseline',experiment:'voltage',...data.defaults};config={...defaults};presets=(data.presets||[]).map(p=>({...p,label:p.reference_id?(referenceLabels[p.reference_id]||publicText(p.label)):publicText(p.label),description:publicText(p.description)}));verification=data.verification||null;verificationUrl=data.verification_url||null;defaultPresetId=data.default_preset_id||'';
       selectedCircuitPresetId=defaultPresetId;
       setupMetadata(data);buildFields();syncFields();buildCharts();renderVerification();
@@ -883,7 +883,7 @@
       });
       window.PVChoices?.refresh();
       initialized=true;revision++;run();
-    }catch(error){$('error').textContent=`${error.message} 起動スクリプトからこのページを開いてください。`;$('error').hidden=false;status('サーバーに接続できません','error');}
+    }catch(error){$('error').textContent=`${error.message} ${window.MPPTBrowser?'接続を確認して再読み込みしてください。':'起動スクリプトからこのページを開いてください。'}`;$('error').hidden=false;status(window.MPPTBrowser?'読み込めませんでした':'サーバーに接続できません','error');}
   }
   window.PVPIDLab={getConfig:()=>({...config}),getResult:()=>current,isRunning:()=>running,getAutotuneState:()=>gainAutotune?.getState()||null,getPerformance:()=>({...uiPerformance}),getAlgorithms:()=>algorithms,getParameterSets:()=>presets,getBaseline:()=>baseline,setConfig:values=>{if(values.algorithm&&values.algorithm!==config.algorithm)applyAlgorithmPreset(values.algorithm);config={...config,...values};changed();},recalculate:()=>{revision++;pending=true;run();}};
   init();

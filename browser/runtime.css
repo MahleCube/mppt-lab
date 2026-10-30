@@ -1,0 +1,3 @@
+.browser-runtime-status{position:fixed;z-index:1000;left:50%;bottom:18px;transform:translateX(-50%);max-width:min(560px,calc(100vw - 32px));padding:12px 18px;border:1px solid #b8d5dc;border-radius:9px;background:#f4fcff;color:#174653;box-shadow:0 3px 14px #17394418;font:14px/1.5 system-ui,sans-serif}
+.browser-runtime-status[hidden]{display:none}
+.browser-runtime-status[data-error="true"]{border-color:#dcb5ac;background:#fff5f1;color:#823d2e}

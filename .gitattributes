@@ -2,3 +2,4 @@
 native/**/c07_control.c -text
 native/**/c07_control.h -text
 *.dll binary
+*.wasm binary
